@@ -37,7 +37,7 @@ const HM_STATE_ACTUAL = '.ACTUAL_TEMPERATURE';
 const HM_STATE_SET = '.SET_POINT_TEMPERATURE';
 
 // Script wie oft ausführen? 
-const SCHEDULE = '* */3 * * *' // Alle 3 Stunden
+const SCHEDULE = '0 */3 * * *' // Alle 3 Stunden
 
 // Logeinträge auf Debug setzen?
 const DEBUG = true;
