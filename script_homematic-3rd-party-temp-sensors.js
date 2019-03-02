@@ -2,7 +2,7 @@
  * ---------------------------
  * Script "Einbindung Fremd-Temperatur-Sensoren in Homematic mittels Offset-Setzen"
  * ---------------------------
- * Version: 0.1
+ * Version: 0.2
  * Source: https://github.com/Mic-M/iobroker.homematic-3rd-party-temp-sensors
  ******************************************************************************/
 
@@ -81,7 +81,7 @@ function updateThermostats() {
             var loopHmSetTemp = getState(loopElement + HM_STATE_SET).val;
             var loopHmActualTemp = getState(loopElement + HM_STATE_ACTUAL).val;
             var loopExtTemp = getState(roomsHardware[i][1]).val;
-            var loopOffset = (loopHmActualTemp - loopExtTemp);
+            var loopOffset = (loopExtTemp - loopHmActualTemp);
             var tempArr = loopElement.split(".");
             var loopHmState = tempArr[0] + '.' + tempArr[1]; // Wir brauchen nur den Anfang des States, also von 'hm-rpc.0.ABCDEFGHJ.4' den Teil "hm-rpc.0"
             var loopHmID = tempArr[2]; // Wir brauchen nur die ID, also von 'hm-rpc.0.ABCDEFGHJ.4' den Teil "ABCDEFGHJ"
@@ -89,7 +89,7 @@ function updateThermostats() {
 
             // Nur berücksichten, falls derzeit gesetzte Temperatur nicht kleiner als definierte Minimum-Soll-Temperatur ist.
             // Das vermeidet unnötiges setzen des Offset, wenn z.B. Thermostat auf 12°C eingestellt, während Raumtemperatur bei 22°C ist.
-            if (loopElement < roomsHardware[i][2]) {
+            if (loopHmSetTemp < roomsHardware[i][2]) {
                 // Unterhalb der Minimum-Soll-Temperatur, also machen wir nichts.
                 if(DEBUG) log(lRoom + ": Skip - Thermostat's set temperature (" + loopHmSetTemp + ") is below defined script min temp (" + roomsHardware[i][2] + ")")
             } else {
