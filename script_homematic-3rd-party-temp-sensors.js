@@ -15,7 +15,7 @@
  * Konfiguration
  ******************************************************************************/
 
-// Hier für jeden Raum den externen Temperatursensor eintragen, sowie ein oder mehrere Homematic-Thermostate
+// Hier für jedes Thermostat den externen Temperatursensor eintragen, sowie das Homematic-Thermostat
 // 0. Name: kann beliebig benannt werden und dient nur zur Log-Ausgabe.
 // 1. Datenpunkt Externer Sensor: Hier entsprechend den Datenpunkt eintragen, in dem die Temperatur steht (Xiaomi, etc.).
 // 2. Min-Temp: Minimum-Soll-Temperatur (Set Temperature) am Homematic-Thermostat, erst dann löst das Script die 
